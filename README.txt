@@ -7,6 +7,7 @@ TL;DR version:
 
 install pyyaml and markdown
 run main.py and pass it the local name of a subfolder
+    on Windows you can try dragging the subfolder onto build_windows.bat
 subfolder is expected to contain folders named "source" and "dictionary",
     which contain html/markdown/templating and yaml files respectively.
 outputs to build folder (creates if necessary)
