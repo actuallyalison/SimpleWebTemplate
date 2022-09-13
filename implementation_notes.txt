@@ -1,0 +1,70 @@
+
+Simple web templating:
+
+just need two tag types:
+
+{{ file:../some/path/and/file.htm }}
+loads the contents of that file inline to avoid duplication
+
+{{ value: some-dictionary-key }}
+loads the value that is under that key in a yaml file inline to avoid duplication (especially for sane link management)
+
+For the file tags, here's an algorithm that may work:
+
+take arguments for source and target folder
+if target folder doesn't exist
+	create it
+if target folder isn't empty
+	error and exit (calling script should be responsible for nuking target folder)
+
+load the yaml key-values into dictionary
+
+get list of all files in the folder tree
+for each file (ideally filter out binary formats, including images)
+	instantiate file object that does the following
+		load file
+		for each line
+			for each {{ }} tag in line (regex, they don't need to nest)
+				if it's a file reference
+					add it to file reference list
+				if it's a value reference
+					look up the value in the key-values dictionary and replace it inline
+		if file reference list is empty
+			put it in tagless list
+		else
+			put it in tagged list
+
+while there are tagged files
+	set did_something_this_pass to false
+	for each tagged file
+		for each tag
+			if the referenced file is tagless
+				pull it in
+				if parent file is now tagless
+					move to tagless list
+					maybe save to disk at this time, unless we want entire operation to be atomic in case of error
+				set did_something_this_pass to true
+	if did_something_this_pass is still false
+		there was a circular reference
+		print error listing remaining files and their tags
+		break
+
+The loaded files could be stored in a class that has
+	file pathname
+	file contents
+	list of pathnames referenced
+	possible flag for whether file has been saved to output folder
+
+On saving changes, they are not saved in place!
+need to save to a different folder that preserves the same subfolder structure
+
+List of files in deployment for this:
+main.py
+build_windows.bat 
+build_linux.rc (or whatever bash scripts are)
+README.txt
+source (empty folder)
+deployment (empty folder)
+
+
+

@@ -1,0 +1,5 @@
+# Switch this key out to change to the real paths when 
+# building for production vs testing on localhost:
+#site-root: https://www.mywebsite.com/
+site-root: file:///home/alison/Desktop/simple_web_template/sample_blog/build/
+#site-root: file:///C:/users/[username]/Downloads/simple_web_template/sample_blog/build/

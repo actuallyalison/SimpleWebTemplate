@@ -1,0 +1,42 @@
+
+.title_text {
+	font-size: 2rem;
+	font-weight: bold;
+}
+
+body {
+font-family: courier new, monospace;
+font-size:2rem;
+}
+
+.header_container {
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 50rem;
+}
+
+.body_container {
+	max-width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+a {
+	color: black;
+}
+
+// Extra small devices (portrait phones, less than 576px)
+// No media query since this is the default in Bootstrap
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) { }
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) { }
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) { body { font-size: 1.5rem; } }
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { }
+
