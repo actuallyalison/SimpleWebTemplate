@@ -31,11 +31,10 @@ This would replace the template value entry above (everything between the {{ }} 
 Dependencies:
 Requires yaml (pip install pyyaml)
 
-TODO: examine this:
-What this does right now, in detail, to figure out if it makes sense:
-    - get arguments (currently just optional overrides for source and target folder)
-    - hard code name of substitution parameters file
-    - delete everything in target folder
+Pseudocode:
+    - get argument for target project subfolder 
+    - load dictionary keys from any yaml files in dictionary folder
+    - delete everything in build folder
     - convert markdown
         - find all .md files in source
         - convert to .html and write to target
@@ -49,6 +48,7 @@ What this does right now, in detail, to figure out if it makes sense:
                 - '.jpg', '.png', '.gif', 'tiff', '.ico' are loaded as binaries into no_refs
                 - other files are assumed text and have their refs catalogued as part of class load
                 - ones with refs go into has_refs, ones without into no_refs
+    - write all loaded files to build folder
          
          
 TODO: 
