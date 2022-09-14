@@ -11,8 +11,10 @@ import markdown
 
 Functionality:
 
-Crawls through the source folder (default name 'source' or you can drag a folder onto this script or edit build_windows.bat)
-and replaces template references with their actual contents in a new copy in the build folder (default 'build'). 
+See README.txt for more complete user documentation
+
+Crawls through the source folder inside the passed-in project folder 
+and replaces template references with their actual contents in a new copy in the build folder. 
 
 Supports two types of templating currently:
 
@@ -22,14 +24,15 @@ these will be replaced by the contents of that file.
 
 Value references:
 {{ value:: jquery-filename }}
-these will be replaced by the value from a key-value pair with that name defined in the YAML file.
-Currently this is outside the source folder in the base folder and is called template_values.yaml
+these will be replaced by the value from a key-value pair with that name defined in a YAML file.
+This loads all .yml or .yaml files in the dictionary folder that needs to exist inside each project subfolder.
 Example entry:
 jquery-filename: jquery.4.7.js
 This would replace the template value entry above (everything between the {{ }} ) with "jquery.4.7.js".
 
 Dependencies:
-Requires yaml (pip install pyyaml)
+Requires yaml (pip3 install pyyaml) and markdown (pip3 install markdown)
+Requires python 3
 
 Pseudocode:
     - get argument for target project subfolder 
